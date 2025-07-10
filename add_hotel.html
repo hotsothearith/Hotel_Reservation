@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel-register</title>
+    <link rel="stylesheet" href="owner_signup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="left-section">
+            <h2>Sign up for Hotel</h2>
+            <form action="add_hotel.php" method="post" enctype="multipart/form-data">
+                <div class="input-box">
+                    <span class="details">Hotel Name</span>
+                    <input type="text" name="hotel_name" placeholder="Full Name of your hotel" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="location" class="details">Location</label>
+                    <input type="text" id="location" name="location" list="locations" placeholder="Enter your hotel's location, e.g., Phnom Penh" required>
+                    <datalist id="locations">
+            <option value="Phnom Penh"></option>
+            <option value="Siem Reap"></option>
+            <option value="Battambang"></option>
+            <option value="Sihanoukville"></option>
+          </datalist>
+                </div>
+
+                <div class="input-box">
+                    <label for="hotel_image" class="details">Upload Image</label>
+                    <input type="file" name="hotel_image" accept="image/*" required>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Description</span>
+                    <input type="text" name="description" placeholder="Describe about your hotel" required>
+                </div>
+
+                <!-- Submit button to finalize registration -->
+                <div class="input-box button">
+                    <input type="submit" value="Create new Hotel">
+                </div>
+
+                <!-- Back to home -->
+                <div class="wrapper-text">
+                    <div class="text">
+                        <a href="owner_das.php">Cancel</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

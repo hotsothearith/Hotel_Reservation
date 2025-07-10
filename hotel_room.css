@@ -1,0 +1,570 @@
+/* Import Google Fonts - Open Sans */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+/* Universal Styles */
+* {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Overall Page Layout */
+body {
+    background-color: #f0f2f5;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    overflow-x: hidden;
+}
+
+.page-container {
+    display: flex;
+    width: 100%;
+}
+
+/* Side Bar */
+.side-bar {
+    width: 190px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: #fff;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+    left: 0;
+    top: 0;
+}
+
+.logo {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.logo img {
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+}
+
+.menu {
+    list-style: none;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu li {
+    line-height: normal;
+    padding: 12px 15px;
+    color: #747268;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.menu li:hover {
+    background-color: #EAF1FF;
+    color: #4A85F6;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+#setting-active {
+    color: #4A85F6;
+    background-color: #EAF1FF;
+    font-weight: 600;
+}
+
+/* Mobile Overlay for Sidebar */
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1;
+    margin-left: 190px;
+    padding: 30px;
+    background-color: #f0f2f5;
+    width: calc(100% - 190px);
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* Header Content */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: #fff;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+.nav-bar h2 {
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.nav-bar p {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.ring-icon {
+    font-size: 1.8rem;
+    color: #777;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.ring-icon:hover {
+    color: #4A85F6;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.profile img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #EAF1FF;
+}
+
+.name-user h3 {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+.name-user p {
+    font-size: 0.8rem;
+    color: #888;
+    margin: 0;
+}
+
+/* Hamburger Menu (hidden by default on desktop) */
+.hamburger-menu {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Search Section */
+.search-section {
+    margin-bottom: 30px;
+}
+
+.search-bar-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #fff;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.search-bar-inner h2 {
+    color: #4A85F6;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.search-input-wrapper {
+    position: relative;
+    flex-grow: 1;
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    padding: 12px 20px 12px 45px;
+    font-size: 1rem;
+    color: #555;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.search-input-wrapper input::placeholder {
+    color: #999;
+}
+
+.search-input-wrapper input:focus {
+    outline: none;
+    border-color: #4A85F6;
+    box-shadow: 0 0 0 3px rgba(74, 133, 246, 0.2);
+}
+
+.search-input-wrapper .fa-magnifying-glass {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 1.1rem;
+    pointer-events: none;
+}
+
+
+/* Content Area for Rooms */
+.rooms-content-area {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 0;
+}
+
+.no-rooms-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 50px 20px;
+    font-size: 1.2rem;
+    color: #777;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Room Card Styles */
+.room-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.room-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.room-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.room-details {
+    padding: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.room-details h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.availability {
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.available {
+    color: #28a745;
+}
+
+.unavailable {
+    color: #dc3545;
+}
+
+.price,
+.guests,
+.amenities {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0;
+    line-height: 1.4;
+}
+.price strong, .guests strong, .amenities strong {
+    color: #333;
+}
+
+.actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.edit-btn,
+.delete-btn,
+.add-btn { /* Changed from .add-btn to .add-room-btn to avoid conflict with the container */
+    padding: 10px 15px;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    flex: 1;
+    min-width: 100px;
+}
+
+.edit-btn {
+    background-color: #4A85F6;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #396dd3;
+    transform: translateY(-2px);
+}
+
+.delete-btn {
+    background-color: #f1f1f1;
+    color: #dc3545;
+    border: 1px solid #e0e0e0;
+}
+
+.delete-btn:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.add-room-btn-container {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 20px;
+    grid-column: 1 / -1;
+}
+
+.add-room-btn-container .add-btn {
+    background-color: #4A85F6;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border-radius: 10px;
+    width: auto;
+    min-width: 180px;
+}
+.add-room-btn-container .add-btn:hover {
+    background-color: #396dd3;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+@media (max-width: 768px) {
+    .side-bar {
+        transform: translateX(-100%);
+        width: 250px;
+    }
+    .side-bar.open {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+        padding-top: 80px;
+    }
+    .header-content {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        padding: 10px 15px;
+        z-index: 990;
+        justify-content: flex-start;
+    }
+    .hamburger-menu {
+        display: block;
+        margin-right: 15px;
+    }
+    .header-content .nav-bar h2 {
+        font-size: 1.4rem;
+    }
+    .header-content .nav-bar p {
+        display: none;
+    }
+    .header-actions {
+        margin-left: auto;
+        gap: 15px;
+    }
+    .header-content .ring-icon {
+        font-size: 1.6rem;
+    }
+    .header-content .profile {
+        gap: 8px;
+    }
+    .header-content .profile img {
+        width: 35px;
+        height: 35px;
+    }
+    .profile .name-user {
+        display: none;
+    }
+
+    .search-section {
+        margin-bottom: 20px;
+    }
+    .search-bar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+    }
+    .search-bar-inner h2 {
+        margin-bottom: 15px;
+        font-size: 1.6rem;
+    }
+    .search-input-wrapper {
+        width: 100%;
+    }
+    .search-input-wrapper input {
+        font-size: 0.95rem;
+    }
+    .search-input-wrapper .fa-magnifying-glass {
+        left: 15px;
+    }
+
+    .rooms-content-area {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .room-card {
+        flex-direction: column;
+    }
+
+    .room-image {
+        height: 180px;
+    }
+
+    .room-details {
+        padding: 15px;
+        gap: 6px;
+    }
+    .room-details h2 {
+        font-size: 1.1rem;
+    }
+    .availability, .price, .guests, .amenities {
+        font-size: 0.85rem;
+    }
+    .actions {
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .edit-btn, .delete-btn {
+        max-width: 48%;
+        font-size: 0.85em;
+        padding: 8px 10px;
+    }
+
+    .add-room-btn-container {
+        padding: 20px 0;
+    }
+    .add-room-btn-container .add-btn {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 10px;
+        padding-top: 70px;
+    }
+    .header-content {
+        padding: 8px 10px;
+    }
+    .header-content .nav-bar h2 {
+        font-size: 1.2rem;
+    }
+    .ring-icon {
+        font-size: 1.4rem;
+        margin-right: 10px;
+    }
+
+    .search-bar-inner {
+        padding: 10px 15px;
+    }
+    .search-bar-inner h2 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    .search-input-wrapper input {
+        font-size: 0.85rem;
+        padding: 8px 10px 8px 35px;
+    }
+    .search-input-wrapper .fa-magnifying-glass {
+        left: 12px;
+        font-size: 1rem;
+    }
+
+    .room-image {
+        height: 150px;
+    }
+    .room-details h2 {
+        font-size: 1rem;
+    }
+    .availability, .price, .guests, .amenities {
+        font-size: 0.8rem;
+    }
+    .actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .edit-btn, .delete-btn {
+        max-width: 100%;
+        font-size: 0.85em;
+        padding: 8px;
+    }
+    .add-room-btn-container {
+        padding: 15px 0;
+    }
+    .add-room-btn-container .add-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}

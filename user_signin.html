@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User-signin</title>
+    <link rel="stylesheet" href="user_signin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <!-- Left Section -->
+      <div class="left-section">
+        <img src="image/bayon.jpg" alt="NokorRealm Image">
+        <div class="overlay">
+          <h1>Nokor<span>Realm</span></h1>
+        </div>
+      </div>
+
+      <!-- Right Section -->
+      <div class="right-section">
+        <h2>Sign in to your Account</h2>
+
+        <!-- Sign In Form -->
+        <form action="user_signin.php" method="post">
+          <!-- Username -->
+          <div class="input-box">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+          </div>
+
+          <!-- Password -->
+          <div class="input-box">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="input-box button">
+            <input type="submit" value="Sign In">
+          </div>
+
+          <!-- Create Account Link -->
+          <div class="wrapper-2">
+            <div class="text">
+              <a href="user_signup.html">Create an Account</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

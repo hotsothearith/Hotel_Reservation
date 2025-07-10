@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner-signin</title>
+    <link rel="stylesheet" href="user_signin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Left Section -->
+      <div class="left-section">
+        <img src="image/bayon.jpg" alt="NokorRealm Image">
+        <div class="overlay">
+          <h1>Nokor<span>Realm</span></h1>
+        </div>
+      </div>
+
+      <!-- Right Section -->
+      <div class="right-section">
+        <h2>Sign in to your account</h2>
+
+        <!-- Log In Form -->
+        <form action="owner_signin.php" method="post">
+          <!-- email -->
+          <div class="input-box">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email, e.g.,name@gmail.com" required>
+          </div>
+
+          <!-- Password -->
+          <div class="input-box">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="input-box button">
+            <input type="submit" value="Sign In">
+          </div>
+
+          <!-- Create Account Link -->
+          <div class="wrapper-2">
+            <div class="text">
+              <a href="owner_signup.html">Sign up for new account</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

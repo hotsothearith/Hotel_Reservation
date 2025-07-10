@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-section {
+  flex: 15;
+  position: relative;
+  background: #fff;
+}
+
+
+.right-section h2 {
+  font-family: 'Protest Riot', sans-serif;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.overlay span {
+  color: #0D1F45;
+}
+
+.overlay h1 {
+  color: #3252DF;
+}
+
+.left-section .overlay {
+  position: absolute;
+  font-family: 'Protest Riot', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.overlay {
+  background-color: rgba(255, 255, 255, 0.85);
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  top: 37px;
+  left: 22px;
+  right: 0;
+  bottom: 0;
+}
+
+.wrapper {
+  display: flex;
+  width: 850px;
+  background: #eee;
+  border-radius: 6px;
+  overflow: hidden;
+
+}
+
+.left-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.right-section {
+  flex: 10;
+  padding: 50px;
+  background: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.right-section h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.input-box {
+  margin-bottom: 15px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.policy {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.policy input {
+  margin-right: 10px;
+}
+
+.policy h3 {
+  font-size: 13px;
+  color: #333;
+}
+
+.input-box.button input {
+  background: #4070f4;
+  color: #fff;
+  font-size: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.input-box.button input:hover {
+  background: #0e4bf1;
+  text-decoration: underline;
+}
+
+.wrapper-text {
+  text-align: center;
+}
+
+.text a {
+  font-size: 14px;
+  color: #444;
+  font-weight: 500;
+
+}
+
+.text a:hover {
+  text-decoration: underline;
+}

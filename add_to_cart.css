@@ -1,0 +1,599 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 120px;
+}
+
+.navbar {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #eee;
+    flex-wrap: wrap;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.menu-content {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.menu-content li {
+    position: relative;
+}
+
+.menu-content li a {
+    font-family: Arial, sans-serif;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    font-weight: bold;
+    color: #102A43;
+}
+
+.menu-content .active {
+    color: #3252DF;
+}
+
+.menu-content li::after {
+    content: " ";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #3252DF;
+    bottom: 0;
+    left: 0;
+    transition: 0.5s ease-in-out;
+    opacity: 0.8;
+}
+
+.menu-content li:hover::after {
+    width: 100%;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    padding: 5px 5px; /* Adjust padding for better look */
+    margin: 0px 0px 11px 60px;
+    cursor: pointer;
+}
+.icons .material-symbols-outlined {
+    font-size: 1.5rem;
+    color: #102A43;
+    gap: 10px;
+    margin-left: 10px;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+}
+
+
+.cart-icon-link {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    padding: 0 10px;
+}
+
+.cart-icon-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.2s ease-in-out;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.cart-icon-container:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-color: #bbb;
+}
+
+.cart-icon-link .fa-solid {
+    font-size: 20px;
+    color: #333;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff0000;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 6px;
+    min-width: 18px;
+    text-align: center;
+    line-height: 1.2;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    display: block;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+/* .icons .material-symbols-outlined {
+    font-size: 1.5rem;
+    color: #102A43;
+    margin: 0 5px;
+}
+
+.icons .dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.icons .dropdown-item {
+    color: #333;
+    padding: 8px 15px;
+}
+
+.icons .dropdown-item:hover {
+    background-color: #f1f1f1;
+    color: #3252DF;
+} */
+
+/* Page Content - Booking Cart */
+h1 {
+    font-family: Arial, sans-serif;
+    color: #102A43;
+    font-weight: bold;
+    margin: 20px 0;
+    text-align: center;
+    padding: 0 15px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+}
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+.alert-error, .alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+.alert-info {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.booking-card {
+    display: flex;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    align-items: center;
+    padding: 15px;
+    width: 100%;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.room-image {
+    width: 200px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.room-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 250px;
+}
+
+.room-details h2 {
+    margin: 0 0 5px 0;
+    font-size: 1.35rem;
+    color: #333;
+}
+
+.room-details p {
+    margin: 2px 0;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.room-details strong {
+    margin-right: 5px;
+}
+
+#price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1ABC9C;
+    margin-top: 10px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.remove-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.95rem;
+}
+.remove-btn:hover {
+    background-color: #c82333;
+}
+
+.total-price-section {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #102A43;
+    padding: 0 15px;
+}
+
+.total-price-section span {
+    color: #1ABC9C;
+    margin-left: 10px;
+}
+
+.booking-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding: 0 15px;
+}
+
+.primary-btn-lg {
+    background-color: #1D4ED8;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    min-width: 250px;
+}
+
+.primary-btn-lg:hover {
+    background-color: #122da7;
+}
+.phone-menu{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.phone-menu li{
+    list-style: none;
+}
+.phone-menu li a{
+    color: #333;
+    text-decoration: none;
+    display: block;
+    padding: 5px 20px;    
+}
+.phone-menu button{
+    background-color: #0056d2;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.phone-menu li button{
+    transition: all 0.5s;
+}
+.drop-menu{
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: none;
+    transition: all 0.5s;
+}
+.phone-menu:hover .drop-menu{
+    display: block;
+    position: absolute;
+}
+.phone-menu:hover .drop-menu li:hover{
+    background-color: #f1f1f1;
+    color: #333;
+    cursor: pointer;
+}
+.drop-menu li{
+    list-style: none;
+    margin: 0 20px 10px 0px;
+}
+/* --- Media Queries --- */
+
+/* Small devices (phones, up to 576px) */
+@media (max-width: 576px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo {
+          position: absolute;
+        top: 15px;
+        left: 10px;
+    }
+
+    .menu-content {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu-content li {
+        width: 100%;
+    }
+
+    .cart-icon-container,
+    .icons {
+        margin-left: 0;
+        /* margin-top: 10px; */
+        padding: 5px 8px;
+    }
+
+    .cart-icon-container {
+        width: 35px;
+        height: 35px;
+    }
+    .cart-icon-link .fa-solid {
+        font-size: 18px;
+    }
+
+    .icons .material-symbols-outlined {
+        font-size: 1.3rem;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    .booking-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+        align-items: center;
+    }
+
+    .room-image {
+        width: 80%;
+        height: auto;
+        max-height: 180px;
+        margin-bottom: 10px;
+    }
+
+    .room-details {
+        min-width: unset;
+        width: 100%;
+        text-align: center;
+    }
+    .room-details h2 {
+        font-size: 1.2rem;
+    }
+    .room-details p, .room-details small {
+        font-size: 0.9rem;
+    }
+    #price {
+        font-size: 1.1rem;
+    }
+
+    .actions {
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .remove-btn {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+
+    .total-price-section {
+        font-size: 1.4em;
+        margin-top: 20px;
+    }
+
+    .primary-btn-lg {
+        width: 100%;
+        font-size: 1em;
+        padding: 10px 20px;
+        min-width: unset;
+    }
+    .icons{
+        display: none;
+    }
+}
+
+/* Medium devices (tablets, 577px to 992px) */
+@media (min-width: 577px) and (max-width: 992px) {
+    .header-content {
+        max-width: 95%;
+        margin-right: 180px;
+    }
+
+    .menu-content {
+        gap: 15px;
+    }
+
+    .cart-icon-container,
+    .icons {
+        margin-left: 40px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .booking-card {
+        padding: 15px 25px;
+        gap: 20px;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .room-image {
+        width: 180px;
+        height: 110px;
+    }
+
+    .room-details {
+        min-width: 200px;
+    }
+    .room-details h2 {
+        font-size: 1.3em;
+    }
+    .room-details p {
+        font-size: 0.95em;
+    }
+
+    .actions {
+        margin-top: 0;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .remove-btn {
+        width: auto;
+        padding: 7px 12px;
+        font-size: 0.9rem;
+    }
+
+    .primary-btn-lg {
+        padding: 10px 20px;
+        font-size: 1.1em;
+        min-width: 220px;
+    }
+    .phone-menu{
+        display: none;
+    }
+
+}
+
+/* Large devices (desktops, 993px and up) - base styles already cover this */
+@media (min-width: 993px) {
+    .header-content {
+        max-width: 1200px;
+    }
+    .booking-card {
+        padding: 20px 40px 20px 20px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        flex-wrap: nowrap;
+    }
+    .room-image {
+        width: 240px;
+        height: 120px;
+    }
+    .room-details {
+        min-width: 300px;
+    }
+    .actions {
+        flex-direction: row;
+    }
+    .phone-menu{
+        display: none;
+    }
+}

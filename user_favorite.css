@@ -1,0 +1,585 @@
+/* Import Google Fonts - Poppins is more modern than Open Sans */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Universal Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Crucial for responsive layouts */
+    font-family: 'Poppins', 'Open Sans', sans-serif; /* Prefer Poppins */
+}
+
+/* Overall Page Layout */
+body {
+    background-color: #f8fafd; /* Light, clean background */
+    color: #333; /* Default text color */
+}
+
+.page-container {
+    display: flex; /* Flex container for sidebar and main content */
+    min-height: 100vh; /* Ensure it takes full viewport height */
+    position: relative; /* For sidebar overlay */
+}
+
+/* Side Bar */
+.side-bar {
+    width: 190px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08); /* Softer shadow */
+    position: sticky; /* Sticky on desktop, fixed on mobile */
+    top: 0;
+    left: 0;
+    height: 100vh; /* Full viewport height */
+    overflow-y: auto;
+    background-color: #fff; /* White background */
+    z-index: 1000; /* Ensure it's on top */
+    transition: transform 0.3s ease-in-out; /* For mobile slide-in */
+}
+
+.logo {
+    padding: 20px 0; /* Adjust padding */
+    text-align: center;
+}
+
+.logo img {
+    width: 150px;
+    display: block; /* Centers the image */
+    margin: 0 auto;
+}
+
+.menu {
+    list-style: none;
+    padding: 20px 10px; /* Add padding to the menu container */
+}
+
+.menu li {
+    line-height: normal; /* Reset line-height */
+    padding: 12px 15px; /* Adjust padding for list items */
+    color: #747268;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 8px; /* Slightly less rounded for a modern feel */
+    margin-bottom: 8px; /* Space between menu items */
+}
+
+.menu li:hover {
+    background-color: #EAF1FF;
+    color: #4A85F6;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent li */
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Slightly reduced gap */
+    font-size: 0.95rem; /* Use rem for font size */
+    font-weight: 500; /* Slightly bolder */
+}
+
+#setting-active {
+    color: #4A85F6;
+    background-color: #EAF1FF;
+    font-weight: 600; /* Highlight active item */
+}
+
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1; /* Allows main content to fill remaining space */
+    padding: 30px; /* Generous padding around the main content */
+    background-color: #f8fafd; /* Match body background */
+    width: calc(100% - 190px); /* Adjust width for desktop */
+}
+
+/* Header Content */
+.header-content {
+    display: flex;
+    justify-content: space-between; /* Distribute items horizontally */
+    align-items: center; /* Vertically align items */
+    margin-bottom: 30px; /* Space below header */
+    background-color: #fff; /* White background for header */
+    padding: 20px 30px; /* Internal padding */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Soft shadow */
+}
+
+.nav-bar h2 {
+    font-size: 1.6rem; /* Larger, more prominent heading */
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.nav-bar p {
+    color: #777; /* Softer color for sub-text */
+    font-size: 0.9rem;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Space between notification and profile */
+}
+
+.ring-icon {
+    font-size: 1.8rem; /* Larger icon */
+    color: #777;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.ring-icon:hover {
+    color: #4A85F6;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.profile img {
+    width: 45px; /* Larger profile image */
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #EAF1FF; /* Subtle border */
+}
+
+.name-user h3 {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+.name-user p {
+    font-size: 0.8rem;
+    color: #888;
+    margin: 0;
+}
+
+/* Hamburger Menu (hidden by default on desktop) */
+.hamburger-menu {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #333;
+}
+
+
+/* Search Section */
+.search-section {
+    margin-bottom: 30px; /* Space below the search bar */
+}
+
+.search-bar-inner { /* New div for search bar */
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between H2 and search input */
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Softer, more prominent shadow */
+}
+
+.search-bar-inner h2 {
+    color: #4A85F6;
+    font-size: 1.8rem; /* Larger and more prominent title */
+    font-weight: 600;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.search-input-wrapper {
+    position: relative;
+    flex-grow: 1;
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px; /* Pill-shaped input field */
+    padding: 12px 20px 12px 45px; /* Padding for text and icon */
+    font-size: 1rem;
+    color: #555;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.search-input-wrapper input::placeholder {
+    color: #999;
+}
+
+.search-input-wrapper input:focus {
+    outline: none;
+    border-color: #4A85F6;
+    box-shadow: 0 0 0 3px rgba(74, 133, 246, 0.2);
+}
+
+.search-input-wrapper .fa-magnifying-glass {
+    position: absolute;
+    left: 18px; /* Position inside input */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 1.1rem;
+    pointer-events: none;
+}
+
+
+/* Favorite Content Area */
+.favorite-content-area {
+    padding: 0; /* Reset outer padding if already handled by main-content */
+}
+
+.grid-container {
+    display: grid; /* Use CSS Grid for flexible card layout */
+    grid-template-columns: 300px 300px 300px 300px 300px; /* Responsive columns */
+    gap: 25px; /* Space between cards */
+    padding: 0;
+}
+
+/* Individual Hotel Card */
+.card {
+    background-color: #fff;
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    overflow: hidden;
+    position: relative; /* For positioning price-badge and close-btn */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex; /* Flex container for content inside card */
+    flex-direction: column; /* Stack image and info vertically */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Subtle lift effect on hover */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18); /* More pronounced shadow on hover */
+}
+
+.card img {
+    width: 100%;
+    height: 180px; /* Fixed height for consistent image size */
+    object-fit: cover;
+    display: block; /* Remove extra space below image */
+}
+
+/* Price Badge Styling */
+.price-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(74, 133, 246, 0.9); /* Primary blue with some transparency */
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px; /* Rounded corners for the badge */
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column; /* Stack price elements */
+    align-items: flex-start;
+    gap: 3px;
+    z-index: 5; /* Ensure it's above the image */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.price-badge .discount-percent {
+    background-color: #ff5722; /* Accent color for discount */
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-bottom: 5px;
+    align-self: flex-end; /* Align percentage to the right */
+}
+
+.price-badge .current-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.price-badge .original-price {
+    font-size: 0.85rem;
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.7); /* Lighter color for struck-through price */
+}
+
+
+/* Info Section (Hotel Name and Location) */
+.info {
+    padding: 15px;
+    background-color: #fff; /* Explicitly white background */
+    flex-grow: 1; /* Allow info to grow to fill space */
+}
+
+.info h3 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+}
+
+.info p {
+    font-size: 0.9rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between icon and text */
+}
+
+.info p .material-symbols-outlined {
+    font-size: 1.1em;
+    color: #4A85F6; /* Primary color for location icon */
+}
+
+/* Close Button (Remove Favorite) */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 50, 50, 0.85); /* Red color for removal */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px; /* Larger hit area */
+    height: 35px;
+    font-size: 1.8em; /* Larger 'x' */
+    line-height: 1; /* Center the 'x' */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.close-btn:hover {
+    background: #ff0000; /* Darker red on hover */
+    transform: scale(1.1); /* Slight grow effect */
+}
+
+/* Link overlay for the whole card */
+.card-link-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Below close-btn and price-badge */
+}
+
+.no-favorites-message {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2rem;
+    color: #777;
+    width: 100%; /* Ensure it spans full width in the grid */
+    grid-column: 1 / -1; /* Make it span all columns in the grid */
+}
+
+
+/* --- Media Queries for Responsiveness --- */
+
+/* Tablet and Mobile adjustments */
+@media (max-width: 768px) {
+    .page-container {
+        flex-direction: column; /* Stack sidebar and main content vertically */
+    }
+
+    .side-bar {
+        position: fixed; /* Keep fixed for slide-out effect */
+        height: 100%; /* Full height when open */
+        transform: translateX(-100%); /* Hide sidebar off-screen by default */
+        box-shadow: 5px 0 15px rgba(0,0,0,0.3); /* More prominent shadow when open */
+        width: 250px; /* Make sidebar a bit wider for mobile */
+        z-index: 1001; /* Ensure it's above overlay */
+    }
+
+    .side-bar.open {
+        transform: translateX(0); /* Slide sidebar in */
+    }
+
+    /* Overlay when sidebar is open */
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000; /* Below sidebar, above content */
+        display: block; /* Shown by JS when sidebar is open */
+    }
+
+
+    .main-content {
+        width: 100%; /* Main content takes full width */
+        margin-left: 0; /* No margin due to sidebar */
+        padding: 15px; /* Adjust main content padding */
+        padding-top: 80px; /* Space for fixed header */
+    }
+
+    .header-content {
+        position: fixed; /* Fixed header on top for mobile */
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 0; /* No rounded corners for full-width fixed header */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        padding: 10px 15px; /* Adjust padding for mobile header */
+        z-index: 999; /* Below sidebar, above content */
+    }
+
+    .hamburger-menu {
+        display: block; /* Show hamburger icon on mobile */
+        margin-right: 15px; /* Space it from nav-bar */
+    }
+
+    .header-content .nav-bar h2 {
+        font-size: 1.4rem;
+    }
+    .header-content .nav-bar p {
+        display: none; /* Hide 'Have a nice day' on smaller screens */
+    }
+    .header-content .ring-icon {
+        font-size: 1.6rem;
+    }
+    .header-content .profile {
+        display: none; /* Hide profile text on smaller screens to save space */
+    }
+    .header-content .profile img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .search-section {
+        margin-bottom: 20px;
+    }
+
+    .search-bar-inner {
+        flex-direction: column; /* Stack search title and input */
+        align-items: flex-start;
+        padding: 15px 20px;
+    }
+    .search-bar-inner h2 {
+        margin-bottom: 15px;
+        font-size: 1.6rem;
+    }
+    .search-input-wrapper {
+        width: 100%; /* Input wrapper takes full width */
+    }
+    .search-input-wrapper input {
+        font-size: 0.95rem;
+    }
+    .search-input-wrapper .fa-magnifying-glass {
+        left: 15px;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr; /* Single column for favorite cards on small screens */
+        gap: 15px;
+    }
+
+    .card {
+        flex-direction: row; /* Layout image and info side-by-side */
+        align-items: center;
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .card img {
+        width: 120px; /* Smaller image on the left */
+        height: 100px; /* Adjust height */
+        border-radius: 8px; /* Slightly rounded corners */
+        flex-shrink: 0;
+    }
+
+    .card .price-badge {
+        top: 10px;
+        left: 10px;
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    .price-badge .current-price {
+        font-size: 1rem;
+    }
+    .price-badge .original-price {
+        font-size: 0.7rem;
+    }
+    .price-badge .discount-percent {
+        font-size: 0.7em;
+    }
+
+    .card .info {
+        padding: 0; /* Remove padding as card itself has padding */
+        text-align: left;
+        flex-grow: 1; /* Allow info to take remaining space */
+    }
+
+    .info h3 {
+        font-size: 1rem;
+    }
+    .info p {
+        font-size: 0.85rem;
+    }
+
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        font-size: 1.5em;
+    }
+}
+
+/* Very Small Mobile Adjustments */
+@media (max-width: 480px) {
+    .main-content {
+        padding: 10px;
+        padding-top: 70px;
+    }
+    .header-content {
+        padding: 8px 10px;
+    }
+    .header-content .nav-bar h2 {
+        font-size: 1.2rem;
+    }
+    .ring-icon {
+        font-size: 1.4rem;
+        margin-right: 10px;
+    }
+
+    .search-bar-inner {
+        padding: 10px 15px;
+    }
+    .search-bar-inner h2 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    .search-input-wrapper input {
+        font-size: 0.85rem;
+        padding: 8px 10px 8px 35px; /* Smaller padding for input */
+    }
+    .search-input-wrapper .fa-magnifying-glass {
+        left: 12px;
+        font-size: 1rem;
+    }
+
+    .card {
+        flex-direction: column; /* Stack vertically again for very small screens */
+        padding: 10px;
+        gap: 10px;
+    }
+    .card img {
+        width: 100%;
+        height: 150px;
+    }
+    .card .info {
+        width: 100%;
+        padding: 0;
+    }
+    .info h3 {
+        font-size: 1.1rem;
+    }
+    .info p {
+        font-size: 0.8rem;
+    }
+}
