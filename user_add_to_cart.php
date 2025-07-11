@@ -175,7 +175,7 @@ foreach ($cart_items_display as $item) {
                 <img src="image/NokorRealm.png" alt="">
             </div>
             <ul class="menu-content">
-                <li><a href="#" class="active">Home</a></li>
+                <li><a href="user_home.php">Home</a></li>
                 <li><a href="user_hotel_all.php">Hotels</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>

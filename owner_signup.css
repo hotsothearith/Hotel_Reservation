@@ -160,3 +160,23 @@ body {
   color: red;
   font-weight: bold;
 }
+@media only screen and (max-width: 600px) {
+
+.right-section h2{
+  font-size: 20px;
+}
+
+.input-box input,
+.input-box textarea {
+  font-size: 12px;
+}
+
+.policy h3 {
+  font-size: 12px;
+}
+
+.container {
+  width: 100%;
+}
+
+}

@@ -125,3 +125,18 @@ body {
 .text a:hover {
 	text-decoration: underline;
 } 
+@media only screen and (max-width: 600px) {
+
+  .overlay{
+    top: 30px;
+    left: 7px;
+    right: 0;
+    bottom: 0;
+  }
+  .overlay h1{
+    font-size: 30px;
+  }
+  .right-section h2 {
+    font-size: 22px;
+  }
+}

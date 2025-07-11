@@ -27,16 +27,83 @@ $owner_stmt->bind_param("i", $owner_id);
 $owner_stmt->execute();
 $owner_result = $owner_stmt->get_result();
 $owner = $owner_result->fetch_assoc();
-
-// Close the statement (connection closed at end of file)
 $owner_stmt->close();
 
-// --- You would add PHP logic here to fetch actual booking/earning data ---
-// For now, these are static as in your original code
-$totalBookings = 0; // Replace with actual data from DB
-$bookingsLast7Days = 0; // Replace with actual data from DB
-$totalEarning = 0; // Replace with actual data from DB
-$earningLast7Days = 0; // Replace with actual data from DB
+
+
+// --- Fetch ACTUAL Booking and Earning Data ---
+
+// 1. Get current date and date 7 days ago
+$today = date('Y-m-d H:i:s');
+$seven_days_ago = date('Y-m-d H:i:s', strtotime('-7 days'));
+
+// SQL Query to get total bookings and total earnings for ALL TIME
+// Join bookings -> rooms -> hotels -> owners
+$total_data_query = "
+    SELECT
+        COUNT(b.booking_id) AS total_bookings,
+        SUM(b.total_cost) AS total_earning -- Use total_cost from your booking table
+    FROM
+        bookings b
+    JOIN
+        rooms r ON b.room_id = r.room_id
+    JOIN
+        hotels h ON r.hotel_id = h.hotel_id
+    WHERE
+        h.owner_id = ?
+        AND b.payment_status = 'fully_paid'; -- Assuming 'paid' means a completed booking from your table
+";
+
+$total_data_stmt = $conn->prepare($total_data_query);
+if ($total_data_stmt) {
+    $total_data_stmt->bind_param("i", $owner_id);
+    $total_data_stmt->execute();
+    $total_data_result = $total_data_stmt->get_result();
+    $total_data = $total_data_result->fetch_assoc();
+
+    if ($total_data) {
+        $totalBookings = $total_data['total_bookings'] ?? 0;
+        $totalEarning = $total_data['total_earning'] ?? 0;
+    }
+    $total_data_stmt->close();
+} else {
+    error_log("Error preparing total data query: " . $conn->error); // Log error instead of die
+}
+
+
+// SQL Query to get bookings and earnings for the LAST 7 DAYS
+// Join bookings -> rooms -> hotels -> owners and filter by booked_at
+$last_7_days_query = "
+    SELECT
+        COUNT(b.booking_id) AS bookings_last_7_days,
+        SUM(b.total_cost) AS earning_last_7_days -- Use total_cost from your booking table
+    FROM
+        bookings b
+    JOIN
+        rooms r ON b.room_id = r.room_id
+    JOIN
+        hotels h ON r.hotel_id = h.hotel_id
+    WHERE
+        h.owner_id = ?
+        AND b.payment_status = 'fully_paid' -- Assuming 'paid' means a completed booking from your table
+        AND b.booked_at >= ?; -- Use 'booked_at' column for filtering by date
+";
+
+$last_7_days_stmt = $conn->prepare($last_7_days_query);
+if ($last_7_days_stmt) {
+    $last_7_days_stmt->bind_param("is", $owner_id, $seven_days_ago);
+    $last_7_days_stmt->execute();
+    $last_7_days_result = $last_7_days_stmt->get_result();
+    $last_7_days_data = $last_7_days_result->fetch_assoc();
+
+    if ($last_7_days_data) {
+        $bookingsLast7Days = $last_7_days_data['bookings_last_7_days'] ?? 0;
+        $earningLast7Days = $last_7_days_data['earning_last_7_days'] ?? 0;
+    }
+    $last_7_days_stmt->close();
+} else {
+    error_log("Error preparing 7-day data query: " . $conn->error); // Log error instead of die
+}
 
 ?>
 
@@ -84,9 +151,6 @@ $earningLast7Days = 0; // Replace with actual data from DB
                     <p>Welcome back</p>
                 </div>
                 <div class="header-actions">
-                    <!-- <div class="ring-icon">
-                        <span class="material-symbols-outlined">notifications</span>
-                    </div> -->
                     <div class="profile">
                         <img
                             src="<?php echo htmlspecialchars($owner['owner_image'] ?? 'image/default_profile.png'); ?>"
@@ -109,7 +173,7 @@ $earningLast7Days = 0; // Replace with actual data from DB
                         <div class="info">
                             <p class="title">Total Bookings</p>
                             <h2><?php echo $totalBookings; ?></h2>
-                            <p class="sub-title">Total Bookings for last 7 days</p>
+                            <p class="sub-title">Bookings Last 7 Days</p>
                             <h2><?php echo $bookingsLast7Days; ?></h2>
                         </div>
                         <div class="icon-box yellow">
@@ -122,18 +186,17 @@ $earningLast7Days = 0; // Replace with actual data from DB
                         <div class="info">
                             <p class="title">Total Earning</p>
                             <h2>$<?php echo number_format($totalEarning, 2); ?></h2>
-                            <p class="sub-title">Total Earning for last 7 days</p>
+                            <p class="sub-title">Earning Last 7 Days</p>
                             <h2>$<?php echo number_format($earningLast7Days, 2); ?></h2>
                         </div>
                         <div class="icon-box green">
-                             <span class="material-symbols-outlined">payments</span> </div>
+                            <span class="material-symbols-outlined">payments</span> </div>
                     </div>
                 </div>
-                </div>
-
-        </div> 
+            </div>
         </div>
-         <script src="sidebar.js">
+    </div>
+    <script src="sidebar.js">
     </script>
 </body>
 

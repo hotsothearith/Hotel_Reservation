@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Fetch the hashed password from the database
-    $query = "SELECT accounts.password FROM accounts 
+    $query = "SELECT accounts.account_password FROM accounts 
               INNER JOIN owners ON accounts.account_id = owners.account_id 
               WHERE owners.owner_id = ?";
     $stmt = $conn->prepare($query);

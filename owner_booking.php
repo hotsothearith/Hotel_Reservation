@@ -172,9 +172,9 @@ $bookings_result = $bookings_stmt->get_result();
                     <p>Welcome back</p>
                 </div>
                 <div class="header-actions">
-                    <div class="ring-icon">
+                    <!-- <div class="ring-icon">
                         <span class="material-symbols-outlined">notifications</span>
-                    </div>
+                    </div> -->
                     <div class="profile">
                         <img
                             src="<?php echo htmlspecialchars($owner['owner_image'] ?? 'image/default_profile.png'); ?>"
@@ -206,20 +206,20 @@ $bookings_result = $bookings_stmt->get_result();
                             $duration_text = ($duration_days == 1) ? "1 Day" : ($duration_days > 1 ? "{$duration_days} Days" : "Same day");
 
                             // Use default image if room_image is empty or null
-                            $room_image_path = htmlspecialchars($booking['room_image'] ?? 'image/default_room.png');
-                            if (!file_exists($room_image_path) || empty($booking['room_image'])) {
-                                $room_image_path = 'image/default_room.png'; // Fallback to a generic image
-                            }
+                            // $room_image_path = htmlspecialchars($booking['room_image'] ?? 'image/default_room.png');
+                            // if (!file_exists($room_image_path) || empty($booking['room_image'])) {
+                            //     $room_image_path = 'image/default_room.png'; // Fallback to a generic image
+                            // }
                         ?>
                         <div class="booking-card">
-                            <img src="<?php echo $room_image_path; ?>" alt="Room Image" class="room-image">
+                            <img src="image/<?php echo htmlspecialchars($booking['room_image']); ?>" alt="Hotel Image" class="room-image">
                             <div class="room-details">
-                                <h2><?php echo htmlspecialchars($booking['room_type_name'] ?? 'N/A Room Type'); ?></h2>
+                                <h2><?php echo htmlspecialchars($booking['room_type'] ?? 'N/A Room Type'); ?></h2>
                                 <p class="booking-info">
                                     <strong>Check In:</strong> <?php echo htmlspecialchars(date('d M Y', strtotime($booking['check_in_date'])) ?? 'N/A'); ?> &nbsp;
                                     <strong>Check Out:</strong> <?php echo htmlspecialchars(date('d M Y', strtotime($booking['check_out_date'])) ?? 'N/A'); ?> &nbsp;
                                     <strong>Duration:</strong> <?php echo $duration_text; ?> &nbsp;
-                                    <strong>Guests:</strong> <?php echo htmlspecialchars($booking['num_guests'] ?? 'N/A'); ?> Adults
+                                    <strong>Guests:</strong> <?php echo htmlspecialchars($booking['number_of_guests'] ?? 'N/A'); ?> Adults
                                 </p>
                                 <p class="booked-by"><strong>Booked by: </strong><?php echo htmlspecialchars($booking['guest_name'] ?? 'N/A'); ?></p>
                             </div>

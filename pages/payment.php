@@ -52,7 +52,7 @@ $conn->close();
     </header>
 
     <div class="payment-step">
-        <img src="image/stepper2.png" alt="Payment Step 2">
+        <img src="images/stepper2.png" alt="Payment Step 2">
     </div>
 
     <div class="main-content-wrapper">

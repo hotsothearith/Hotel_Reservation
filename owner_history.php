@@ -120,7 +120,7 @@ function calculateDuration($checkIn, $checkOut) {
         <div class="card-container">
             <?php 
             if ($history_result->num_rows > 0) : 
-                while ($booking = $history_result->fetch()):
+               while ($booking = $history_result->fetch_assoc()):
                     $duration = calculateDuration($booking['check_in_date'], $booking['check_out_date']);
                     $checkOutDateFormatted = (new DateTime($booking['check_out_date']))->format('d M Y');
        
