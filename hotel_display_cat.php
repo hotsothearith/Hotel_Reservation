@@ -30,19 +30,18 @@ if (!$conn) {
 </head>
 
 <body>
-    <header class="navbar">
+       <header class="navbar">
         <div class="header-content">
             <div class="logo">
                 <img src="image/NokorRealm.png" alt="">
             </div>
             <ul class="menu-content">
-                <li><a href="home.php" >Home</a></li>
-                <li><a href="#" class="active">Hotels</a></li>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="hotel_display_all.php">Hotels</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
-        </div>
-        <div class="icons">
+            <div class="icons">
             <div class="dropdown">
                 <div data-bs-toggle="dropdown">
                     <span class="material-symbols-outlined" id="menu-icon">menu</span>
@@ -51,10 +50,28 @@ if (!$conn) {
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="user_signup.html">Sign Up</a></li>
                     <li><a class="dropdown-item" href="user_signin.html">Sign In</a></li>
+                    <li><a class="dropdown-item" href="owner_signup.html" id="owner-btn">As Owner Hotel/House</a></li>
                     <li><a class="dropdown-item" href="#">Help Center</a></li>
                 </ul>
             </div>
         </div>
+        </div>
+        <div class="phone-menu">
+            <div class="phone-menu-content" id="phoneMenuToggle">
+                <span class="material-symbols-outlined">dehaze</span>
+            </div>
+            <ul class="drop-menu" id="dropdownMenu"> <!-- Changed div to ul for semantic correctness -->
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="hotel_display_all.php">Hotels</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="user_signup.html">Sign Up</a></li>
+                <li><a href="user_signin.html">Sign In</a></li>
+                <li><a href="owner_signup.html" id="owner-btn">As Owner Hotel/House</a></li>
+                <li><a href="#">Help Center</a></li>
+            </ul>
+        </div>
+        
     </header>
     <nav class="container mt-4">
         <div class="home-page">
@@ -66,7 +83,6 @@ if (!$conn) {
                         holiday with family. Time to make another <br>
                         memorable moments.</p>
                 </div>
-                <a href="owner_signup.html" class="btn">Register</a>
             </div>
             <div class="home-img">
                 <img src="image/banner.png" alt="">
@@ -169,14 +185,15 @@ if (!$conn) {
                     echo '<div class="col-md-15">'; // 4 cards per row on medium screens and above
                     echo '<div class="card2">';
                     echo '<div class="price-badge">$' . htmlspecialchars($row['min_price']) . ' per night</div>'; // Display the minimum room price
-                    echo '<img src="' . htmlspecialchars($row['hotel_image_url']) . '" alt="Hotel Image">';
                     echo '<a href="hotel_detail.php?hotel_id=' . htmlspecialchars($row['hotel_id']) . '">';
+                    echo '<img src="' . htmlspecialchars($row['hotel_image_url']) . '" alt="Hotel Image">';
+                    echo '</a>';
                     echo '<div class="card2-content">';
                     echo '<h3>' . htmlspecialchars($row['hotel_name']) . '</h3>';
-                    echo '<p>' . htmlspecialchars($row['hotel_location']) . '</p>';
+                    echo '<p> <span class="material-symbols-outlined">location_on</span>' . htmlspecialchars($row['hotel_location']) . '</p>';
                     echo '<button class="favor-btn">★</button>';
                     echo '</div>';
-                    echo '</a>';
+                    
                     echo '</div>';
                     echo '</div>';
                 }
@@ -189,6 +206,7 @@ if (!$conn) {
         </div>
 
     </nav>
+    <script src="menu-bar.js"></script>
 
     <hr class="divider">
     <div class="container">

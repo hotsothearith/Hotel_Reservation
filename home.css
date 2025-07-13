@@ -280,15 +280,23 @@ form {
 }
 
 .discount-badge {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #0056d2;
+       position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(74, 133, 246, 0.9); /* Primary blue with some transparency */
     color: white;
-    font-size: 17px;
-    padding: 8px 15px;
-    border-radius: 15px 0 15px 0;
+    padding: 8px 12px;
+    border-radius: 8px; /* Rounded corners for the badge */
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column; /* Stack price elements */
+    align-items: flex-start;
+    gap: 3px;
+    z-index: 5; /* Ensure it's above the image */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
+
 
 .favorite-btn {
     position: absolute;
@@ -359,15 +367,40 @@ form {
 
 .price-badge {
     position: absolute;
-    top: 0;
-    left: 0;
-    background: #0056d2;
+    top: 15px;
+    left: 15px;
+    background: rgba(74, 133, 246, 0.9); /* Primary blue with some transparency */
     color: white;
-    font-size: 17px;
-    padding: 6px 10px;
-    border-radius: 10px 0 10px 0;
+    padding: 8px 12px;
+    border-radius: 8px; /* Rounded corners for the badge */
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column; /* Stack price elements */
+    align-items: flex-start;
+    gap: 3px;
+    z-index: 5; /* Ensure it's above the image */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+ .discount-percent {
+    background-color: #ff5722; /* Accent color for discount */
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-bottom: 5px;
+    align-self: flex-end; /* Align percentage to the right */
 }
 
+.discount-badge {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.price-badge .original-price {
+    font-size: 0.85rem;
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.7); /* Lighter color for struck-through price */
+}
 .favor-btn {
     position: absolute;
     top: -1px;

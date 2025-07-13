@@ -269,7 +269,7 @@ if (isset($user_id)) {
 
                     echo '<div class="discount-badge">';
                     if ($discountPercentage > 0) {
-                        echo '<div class="discount_percent"><span>' . htmlspecialchars($discountPercentage) . '% OFF</span></div>';
+                        echo '<div class="discount-percent"><span>' . htmlspecialchars($discountPercentage) . '% OFF</span></div>';
                         echo '<div class="discounted-price">$' . number_format($discountedPrice, 2) . '</div>';
                         echo '<div class="original-price"><s>$' . number_format($originalPrice, 2) . '</s></div>';
                     } else {

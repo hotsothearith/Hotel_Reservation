@@ -66,7 +66,7 @@ if (!$conn) {
                         holiday with family. Time to make another <br>
                         memorable moments.</p>
                 </div>
-                <a href="owner_signup.html" class="btn">Register</a>
+                <!-- <a href="owner_signup.html" class="btn">Register</a> -->
             </div>
             <div class="home-img">
                 <img src="image/banner.png" alt="">

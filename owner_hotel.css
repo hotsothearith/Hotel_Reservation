@@ -243,6 +243,7 @@ body {
     display: grid;
     grid-template-columns: 300px 300px 300px 300px 300px; /* Responsive columns */
     padding: 0; /* Handled by .main-content */
+    gap: 25px; 
 }
 
 .no-hotels-message {

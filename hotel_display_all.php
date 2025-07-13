@@ -196,11 +196,11 @@ if (!$conn) {
 
                     echo '<div class="discount-badge">';
                     if ($discountPercentage > 0) {
-                        echo '<div class="discount_percent"><span>' . htmlspecialchars($discountPercentage) . '% OFF</span></div>';
-                        echo '<div class="discounted-price">$' . number_format($discountedPrice, 2) . '</div>';
+                        echo '<div><span class="discount-percent">' . htmlspecialchars($discountPercentage) . '% OFF</span></div>';
+                        echo '<div class="current-price">$' . number_format($discountedPrice, 2) . '</div>';
                         echo '<div class="original-price"><s>$' . number_format($originalPrice, 2) . '</s></div>';
                     } else {
-                        echo '<div class="normal-price">$' . number_format($originalPrice, 2) . '</div>';
+                        echo '<div class="current-price">$' . number_format($originalPrice, 2) . '</div>';
                     }
                     echo '</div>';
 

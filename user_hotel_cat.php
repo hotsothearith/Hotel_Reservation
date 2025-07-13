@@ -33,19 +33,19 @@ $user_id = $_SESSION['user_id'];
 </head>
 
 <body>
-    <header class="navbar">
+     <header class="navbar">
         <div class="header-content">
+            
             <div class="logo">
                 <img src="image/NokorRealm.png" alt="">
             </div>
             <ul class="menu-content">
-                <li><a href="user_home.php" >Home</a></li>
-                <li><a href="#" class="active">Hotels</a></li>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="user_hotel_all.php">Hotels</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
-        </div>
-             <?php
+            <?php
                 // Get cart item count directly from the carts table for the current user
                 $cart_count = 0;
                 $cart_count_sql = "SELECT COUNT(*) AS total_items FROM carts WHERE user_id = ?";
@@ -60,11 +60,12 @@ $user_id = $_SESSION['user_id'];
                 ?>
                  <a href="user_add_to_cart.php" class="cart-icon-link">
             <div class="cart-icon-container">
-                <i class="fa-solid fa-hotel"></i>
+              <i class="fa-solid fa-hotel"></i>
                 <span class="cart-count"><?php echo $cart_count; ?></span>
             </div>
                  </a>
-        <div class="icons">
+             <div class="icons">
+
             <div class="dropdown">
                 <div data-bs-toggle="dropdown">
                     <span class="material-symbols-outlined" id="menu-icon">menu</span>
@@ -77,6 +78,21 @@ $user_id = $_SESSION['user_id'];
                 </ul>
             </div>
         </div>
+        </div>
+        </div>
+        <div class="phone-menu">
+            <div class="phone-menu-content" id="phoneMenuToggle"><span class="material-symbols-outlined">dehaze</span></div>
+            <ul class="drop-menu" id="dropdownMenu">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="user_hotel_all.php">Hotels</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="user_booking.php">Profile</a></li>
+                <li><a href="home.php">Sign Out</a></li>
+                <li><a href="#">Help Center</a></li>
+            </>
+        </div>
+        
     </header>
     <nav class="container mt-4">
         <div class="home-page">
@@ -192,13 +208,14 @@ $user_id = $_SESSION['user_id'];
                     echo '<div class="col-md-15">'; // 4 cards per row on medium screens and above
                     echo '<div class="card2">';
                     echo '<div class="price-badge">$' . htmlspecialchars($row['min_price']) . ' per night</div>'; // Display the minimum room price
-                    echo '<img src="' . htmlspecialchars($row['hotel_image_url']) . '" alt="Hotel Image">';
                     echo '<a href="user_hotel_detail.php?hotel_id=' . htmlspecialchars($row['hotel_id']) . '">';
+                    echo '<img src="' . htmlspecialchars($row['hotel_image_url']) . '" alt="Hotel Image">';
+                    echo '</a>';
                     echo '<div class="card2-content">';
                     echo '<h3>' . htmlspecialchars($row['hotel_name']) . '</h3>';
-                    echo '<p>' . htmlspecialchars($row['hotel_location']) . '</p>';
+                   echo '<p> <span class="material-symbols-outlined">location_on</span>' . htmlspecialchars($row['hotel_location']) . '</p>';
                     echo '</div>';
-                    echo '</a>';
+                   
                     echo '<button class="favor-btn" id="favorite-btn-' . htmlspecialchars($row['hotel_id']) . '" data-hotel-id="' . htmlspecialchars($row['hotel_id']) . '">★</button>';
                     echo '</div>';
                     echo '</div>';

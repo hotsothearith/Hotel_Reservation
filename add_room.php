@@ -29,11 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Handle image upload
-    $room_image = 'uploads/default_room.jpg'; // Default image if none is uploaded
+    $room_image = 'image/default_room.jpg'; // Default image if none is uploaded
     if (isset($_FILES['room_image']) && $_FILES['room_image']['error'] == 0) {
         $image_name = $_FILES['room_image']['name'];
         $image_tmp_name = $_FILES['room_image']['tmp_name'];
-        $upload_dir = "";
+        $upload_dir = "image/";
 
         // Ensure the uploads directory exists and is writable
         if (!is_dir($upload_dir)) {

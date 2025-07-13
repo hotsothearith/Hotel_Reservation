@@ -115,7 +115,7 @@ $room_result = $room_stmt->get_result();
                         $amenities_stmt->close();
                 ?>
                         <div class="room-card">
-                            <img src="image/<?php echo htmlspecialchars($room['room_image']); ?>" alt="Room Image" class="room-image">
+                            <img src="<?php echo htmlspecialchars($room['room_image']); ?>" alt="Room Image" class="room-image">
                             <div class="room-details">
                                 <h2>Type: <?php echo htmlspecialchars($room['room_type']); ?></h2>
                                 <p class="availability <?php echo ($room['room_status'] == 'available') ? 'available' : 'unavailable'; ?>">
