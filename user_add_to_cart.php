@@ -253,7 +253,7 @@ foreach ($cart_items_display as $item) {
             echo "<p>DEBUG PATH 1: image/" . htmlspecialchars($row['room_image']) . "</p>";
             ?> -->
                         <div class="booking-card">
-                            <img src="image/<?php echo htmlspecialchars($row['room_image']); ?>" alt="Hotel Image" class="room-image">
+                            <img src="<?php echo htmlspecialchars($row['room_image']); ?>" alt="Hotel Image" class="room-image">
                             <div class="room-details">
                                 <h2><?php echo htmlspecialchars($row['hotel_name']); ?> - <?php echo htmlspecialchars($row['room_type']); ?></h2>
                                 <p>

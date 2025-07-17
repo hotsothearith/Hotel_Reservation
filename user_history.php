@@ -131,7 +131,7 @@ function calculateDuration($checkIn, $checkOut) {
                             $checkOutDateFormatted = (new DateTime($booking['check_out_date']))->format('d M Y');
                             ?>
                             <div class="booking-card">
-                                <img src="image/<?php echo htmlspecialchars($booking['room_image'] ?? 'image/default_room.jpg'); ?>" alt="Room Image" class="room-image">
+                                <img src="<?php echo htmlspecialchars($booking['room_image'] ?? 'image/default_room.jpg'); ?>" alt="Room Image" class="room-image">
                                 <div class="room-details">
                                     <h2><?php echo htmlspecialchars($booking['room_type'] . " at " . $booking['hotel_name']); ?></h2>
                                     <p>

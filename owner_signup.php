@@ -61,9 +61,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (mysqli_num_rows($result_email) > 0) {
             $_SESSION['error'] = "Email is already registered.";
+            mysqli_stmt_close($stmt_check_email);
             header("Location: owner_signup.html");
             exit();
         }
+        mysqli_stmt_close($stmt_check_email);
 
         $sql_check_phone = "SELECT * FROM owners WHERE phone = ?";
         $stmt_check_phone = mysqli_prepare($conn, $sql_check_phone);
@@ -73,57 +75,81 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (mysqli_num_rows($result_phone) > 0) {
             $_SESSION['error'] = "Phone number is already registered.";
+            mysqli_stmt_close($stmt_check_phone);
             header("Location: owner_signup.html");
             exit();
         }
+        mysqli_stmt_close($stmt_check_phone);
 
         // Hash the password
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $account_role = 'owner';
 
-        // Insert into accounts table
-        $sql_accounts = "INSERT INTO accounts (account_role, owner_email, account_password) VALUES (?, ?, ?)";
-        $stmt_accounts = mysqli_prepare($conn, $sql_accounts);
+        // Start transaction for atomicity
+        mysqli_begin_transaction($conn);
 
-        if ($stmt_accounts) {
-            mysqli_stmt_bind_param($stmt_accounts, "sss", $account_role, $email, $hashed_password);
-            if (mysqli_stmt_execute($stmt_accounts)) {
-                // Get the generated account_id
-                $account_id = mysqli_insert_id($conn);
+        try {
+            // Insert into accounts table
+            $sql_accounts = "INSERT INTO accounts (account_role, owner_email, account_password) VALUES (?, ?, ?)";
+            $stmt_accounts = mysqli_prepare($conn, $sql_accounts);
 
-                // Insert into owners table
-                $sql_owners = "INSERT INTO owners (account_id, owner_full_name, phone) VALUES (?, ?, ?)";
-                $stmt_owners = mysqli_prepare($conn, $sql_owners);
-
-                if ($stmt_owners) {
-                    mysqli_stmt_bind_param($stmt_owners, "iss", $account_id, $full_name, $phone);
-                    if (mysqli_stmt_execute($stmt_owners)) {
-                        // Registration successful, store account ID in session
-                        $_SESSION['account_id'] = $account_id;
-                        $_SESSION['owner_full_name'] = $full_name;
-                        $_SESSION['success'] = "Owner registration successful! Please go to owner home page.";
-                        header("Location: owner_das.php");
-                        exit();
-                    } else {
-                        $_SESSION['error'] = "Owner registration failed. Please try again.";
-                        error_log("MySQL Error (owners): " . mysqli_error($conn));
-                        header("Location: owner_signup.html");
-                        exit();
-                    }
-                } else {
-                    $_SESSION['error'] = "Owner registration failed. Please try again.";
-                    error_log("MySQL Error (owners): " . mysqli_error($conn));
-                    header("Location: owner_signup.html");
-                    exit();
-                }
-                if ($stmt_owners) {
-                    mysqli_stmt_close($stmt_owners);
-                }
+            if (!$stmt_accounts) {
+                throw new Exception("Accounts table prepare failed: " . mysqli_error($conn));
             }
+            mysqli_stmt_bind_param($stmt_accounts, "sss", $account_role, $email, $hashed_password);
+            if (!mysqli_stmt_execute($stmt_accounts)) {
+                throw new Exception("Accounts table insert failed: " . mysqli_error($conn));
+            }
+
+            // Get the generated account_id
+            $account_id = mysqli_insert_id($conn);
             mysqli_stmt_close($stmt_accounts);
+
+            // Insert into owners table
+            $sql_owners = "INSERT INTO owners (account_id, owner_full_name, phone) VALUES (?, ?, ?)";
+            $stmt_owners = mysqli_prepare($conn, $sql_owners);
+
+            if (!$stmt_owners) {
+                throw new Exception("Owners table prepare failed: " . mysqli_error($conn));
+            }
+            mysqli_stmt_bind_param($stmt_owners, "iss", $account_id, $full_name, $phone);
+            if (!mysqli_stmt_execute($stmt_owners)) {
+                throw new Exception("Owners table insert failed: " . mysqli_error($conn));
+            }
+
+            // --- IMPORTANT CHANGE HERE: Get owner_id and set it in session ---
+            $owner_id = mysqli_insert_id($conn); // Get the newly generated owner_id
+            mysqli_stmt_close($stmt_owners);
+
+            // Commit transaction
+            mysqli_commit($conn);
+
+            $_SESSION['owner_id'] = $owner_id; // THIS IS THE FIX
+            $_SESSION['account_id'] = $account_id; // Keep account_id if other parts of system use it
+            $_SESSION['owner_full_name'] = $full_name;
+            $_SESSION['account_role'] = $account_role; // 'owner'
+            $_SESSION['loggedin'] = true; // Still a good idea for general login state
+
+            $_SESSION['success'] = "Owner registration successful! Welcome to your dashboard.";
+            header("Location: owner_das.php"); // Redirect to owner dashboard
+            exit();
+
+        } catch (Exception $e) {
+            // Rollback transaction on error
+            mysqli_rollback($conn);
+            $_SESSION['error'] = "Registration failed: " . $e->getMessage();
+            error_log("Registration Error: " . $e->getMessage()); // Log detailed error
+            header("Location: owner_signup.html");
+            exit();
         }
+    } else {
+        // If not all expected POST variables are set
+        $_SESSION['error'] = "Incomplete form submission.";
+        header("Location: owner_signup.html");
+        exit();
     }
 } else {
+    // If accessed directly without POST request
     header("Location: owner_signup.html");
     exit();
 }

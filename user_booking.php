@@ -105,7 +105,7 @@ $booking_result = $booking_stmt->get_result();
                 <?php if ($booking_result->num_rows > 0): ?>
                     <?php while ($booking = $booking_result->fetch_assoc()): ?>
                         <div class="booking-card">
-                            <img src="image/<?= htmlspecialchars($booking['room_image']) ?>" alt="Room Image" class="room-image">
+                            <img src="<?= htmlspecialchars($booking['room_image']) ?>" alt="Room Image" class="room-image">
                             <div class="room-details">
                                 <h2><?= htmlspecialchars($booking['room_type']) ?></h2>
                                 <p>

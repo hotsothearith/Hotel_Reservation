@@ -212,7 +212,7 @@ $bookings_result = $bookings_stmt->get_result();
                             // }
                         ?>
                         <div class="booking-card">
-                            <img src="image/<?php echo htmlspecialchars($booking['room_image']); ?>" alt="Hotel Image" class="room-image">
+                            <img src="<?php echo htmlspecialchars($booking['room_image']); ?>" alt="Hotel Image" class="room-image">
                             <div class="room-details">
                                 <h2><?php echo htmlspecialchars($booking['room_type'] ?? 'N/A Room Type'); ?></h2>
                                 <p class="booking-info">

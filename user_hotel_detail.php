@@ -370,7 +370,7 @@ if($stmt_cart_count) {
                     ?>
                     <div class="room">
                         <div class="room-img">
-                            <img src="image/<?php echo htmlspecialchars($room['room_image']); ?>" alt="<?php echo htmlspecialchars($room['room_type']); ?>">
+                            <img src="<?php echo htmlspecialchars($room['room_image']); ?>" alt="<?php echo htmlspecialchars($room['room_type']); ?>">
                         </div>
                         <div class="room-details">
                             <div class="room-info">

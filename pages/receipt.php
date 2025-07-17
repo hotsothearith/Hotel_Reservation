@@ -155,7 +155,7 @@ $conn->close();
         <img src="../image/NokorRealm.png" alt="NokorRealm Logo" />
     </header>
          <div class="payment-step">
-        <img src="image/stepper3.png" alt="Booking Step 3">
+        <img src="images/stepper3.png" alt="Booking Step 3">
     </div>
     <div class="main-content-wrapper receipt-container">
         <div class="receipt-header">

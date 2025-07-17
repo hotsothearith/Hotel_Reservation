@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         $_SESSION['warning'] = "Hotel registered, but 'Valid From' date cannot be after 'Valid To' date. Discount not applied.";
                     } else {
                         // Insert discount into the 'discount' table
-                        $sql_discount = "INSERT INTO discount (discount_percentage, valid_from, valid_to, hotel_id)
+                        $sql_discount = "INSERT INTO discounts (discount_percentage, valid_from, valid_to, hotel_id)
                                          VALUES (?, ?, ?, ?)";
                         $stmt_discount = mysqli_prepare($conn, $sql_discount);
 

@@ -72,7 +72,7 @@ $overall_total_cost = 0; // Initialize overall total for all items
                 // ?>
                 <div class="booking-item">
                     <div class="hotel-info-section">
-                        <img src="../image/<?= htmlspecialchars($item['room_image'] ?? '') ?>" alt="Room Image" class="hotel-room-image">
+                        <img src="../<?= htmlspecialchars($item['room_image'] ?? '') ?>" alt="Room Image" class="hotel-room-image">
                         <div class="hotel-text-info">
                             <h2><?= htmlspecialchars($item['hotel_name'] ?? '') ?> - <?= htmlspecialchars($item['room_type'] ?? '') ?></h2>
                             <p class="hotel-location"><i class="fas fa-map-marker-alt"></i> <?= htmlspecialchars($item['hotel_location'] ?? '') ?></p>

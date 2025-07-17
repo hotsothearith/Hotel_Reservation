@@ -126,7 +126,7 @@ function calculateDuration($checkIn, $checkOut) {
        
             ?>
             <div class="booking-card">
-                <img src="image/<?php echo htmlspecialchars($booking['room_image'])?>" alt="Room Image" class="room-image">
+                <img src="<?php echo htmlspecialchars($booking['room_image'])?>" alt="Room Image" class="room-image">
                 <div class="room-details">
                     <h2><?php echo htmlspecialchars($booking['room_type'] . "at" . $booking['hotel_name']); ?></h2>
                     <p><strong>Checked In:</strong> <?php echo $booking['check_in_date']; ?> &nbsp;
